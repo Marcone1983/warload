@@ -1,0 +1,23 @@
+{
+  "name": "cosmic-warlords-elite",
+  "version": "1.0.0",
+  "description": "COSMIC WARLORDS: ELITE - Telegram Mini App Multiplayer Game",
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^2.8.2",
+    "firebase-admin": "^12.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
