@@ -1,0 +1,33 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/**"]
+
+# Environment variables are set via Netlify UI for security
+# Required env vars:
+# - TELEGRAM_BOT_TOKEN (Bot API token from @BotFather)
+# - FIREBASE_PROJECT_ID
+# - FIREBASE_CLIENT_EMAIL  
+# - FIREBASE_PRIVATE_KEY (base64 encoded)
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, X-Telegram-Init-Data"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
